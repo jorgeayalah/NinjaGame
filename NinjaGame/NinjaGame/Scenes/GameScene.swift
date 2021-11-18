@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     var groundNode = Ground()
+    var playerNode = Player()
     var moveSpeed: CGFloat = 8.0
     
     override func didMove(to view: SKView) {
@@ -24,5 +25,7 @@ class GameScene: SKScene {
 extension GameScene{
     func setupNodes(){
         groundNode.setupGround(self)
+        playerNode.setupPlayer(groundNode, scene: self)
+        
     }
 }
