@@ -28,4 +28,17 @@ extension GameScene{
         playerNode.setupPlayer(groundNode, scene: self)
         
     }
+    
+    func spawnWalls(){
+        let scale: CGFloat
+        if Int(arc4random_uniform(UInt32(2))) == 0{
+            scale = -1.0
+        }else{
+            scale = 1.0
+        }
+        let wall = SKSpriteNode(imageNamed: "block").copy() as! SKSpriteNode
+        wall.name = "Block"
+        wall.zPosition = 2.0
+        wall.position = CGPoint(x: size.width + wall.frame.width, y: frame.height/2 + (wall.frame.height + groundNode.frame.height)/2 * scale)
+    }
 }
