@@ -15,6 +15,12 @@ class Player: SKSpriteNode{
         zPosition = 1.0
         zRotation = .pi/2
         setScale(0.25)
+        
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody!.affectedByGravity = false
+        physicsBody!.categoryBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.Wall
+        physicsBody!.contactTestBitMask = PhysicsCategory.Wall | PhysicsCategory.Score
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

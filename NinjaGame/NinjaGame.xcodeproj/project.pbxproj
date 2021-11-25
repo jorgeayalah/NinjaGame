@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB17A4C52746BBC20098FB86 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB17A4C42746BBC20098FB86 /* Player.swift */; };
+		FB65454627500E9100ED9F7E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65454527500E9100ED9F7E /* Types.swift */; };
 		FB92F1D8274FF765007FB9F3 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92F1D7274FF765007FB9F3 /* CGFloat+Ext.swift */; };
 		FB92F1DA274FFC04007FB9F3 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92F1D9274FFC04007FB9F3 /* Cloud.swift */; };
 		FB9D4AF227456E95004B2674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D4AF127456E95004B2674 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		FB17A4C42746BBC20098FB86 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		FB65454527500E9100ED9F7E /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		FB92F1D7274FF765007FB9F3 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		FB92F1D9274FFC04007FB9F3 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		FB9D4AEE27456E95004B2674 /* NinjaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NinjaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB65454427500E7700ED9F7E /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				FB65454527500E9100ED9F7E /* Types.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		FB92F1D6274FF74D007FB9F3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +67,7 @@
 		FB9D4AE527456E95004B2674 = {
 			isa = PBXGroup;
 			children = (
+				FB65454427500E7700ED9F7E /* Types */,
 				FB92F1D6274FF74D007FB9F3 /* Utilities */,
 				FB9D4AF027456E95004B2674 /* NinjaGame */,
 				FB9D4AEF27456E95004B2674 /* Products */,
@@ -194,6 +205,7 @@
 				FB9D4AFA27456E96004B2674 /* GameViewController.swift in Sources */,
 				FB9D4AF227456E95004B2674 /* AppDelegate.swift in Sources */,
 				FB92F1DA274FFC04007FB9F3 /* Cloud.swift in Sources */,
+				FB65454627500E9100ED9F7E /* Types.swift in Sources */,
 				FB17A4C52746BBC20098FB86 /* Player.swift in Sources */,
 				FB9D4B1F27457C41004B2674 /* Ground.swift in Sources */,
 			);

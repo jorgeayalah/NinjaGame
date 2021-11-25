@@ -38,7 +38,7 @@ extension GameScene{
     func setupTimer(){
         let wallRandom = CGFloat.random(min: 1.5, max: 2.5)
         wallTimer = Timer.scheduledTimer(timeInterval: TimeInterval(wallRandom), target: self, selector: #selector(spawnWalls), userInfo: nil, repeats: true)
-        let cloudRandom = CGFloat.random(min: 5.5, max: 10.5)
+        let cloudRandom = CGFloat.random(min: 3.5, max: 6.5)
         cloudTimer = Timer.scheduledTimer(timeInterval: TimeInterval(cloudRandom), target: self, selector: #selector(spawnClouds), userInfo: nil, repeats: true)
     }
     
@@ -57,6 +57,10 @@ extension GameScene{
         //wall.position = CGPoint(x: size.width + wall.frame.width, y: frame.height/2 + (wall.frame.height + groundNode.frame.height)/2 * scale)
         wall.position = CGPoint(x: frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.75)/2 * scale,
                                 y: size.height + wall.frame.height)
+        wall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
+        wall.physicsBody!.isDynamic = false
+        wall.physicsBody!.categoryBitMask = PhysicsCategory.Wall
+        
         addChild(wall)
         wall.run(.sequence([.wait(forDuration: 8.0), .removeFromParent()]))
     }
