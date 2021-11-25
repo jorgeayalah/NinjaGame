@@ -21,6 +21,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(rgb: 0xB3E5FC)
         setupNodes()
+        setupPhysics()
     }
     override func update(_ currentTime: TimeInterval) {
         groundNode.moveGround(self)
@@ -34,6 +35,9 @@ extension GameScene{
         playerNode.setupPlayer(groundNode, scene: self)
         cloud.setupClouds()
         setupTimer() // to spawn walls
+    }
+    func setupPhysics(){
+        physicsWorld.contactDelegate = self
     }
     func setupTimer(){
         let wallRandom = CGFloat.random(min: 1.5, max: 2.5)
@@ -80,5 +84,21 @@ extension GameScene{
         cloud.zRotation = .pi/2
         addChild(cloud)
         cloud.run(.sequence([.wait(forDuration: 15.0), .removeFromParent()]))
+    }
+    func gameOver(){
+        playerNode.removeFromParent()
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate{
+    func didBegin(_ contact: SKPhysicsContact) {
+        let other = contact.bodyA.categoryBitMask == PhysicsCategory.Player ? contact.bodyB : contact.bodyA
+        
+        switch other.categoryBitMask{
+        case PhysicsCategory.Wall:
+            print("Wall")
+            gameOver()
+        default: break
+        }
     }
 }
