@@ -31,5 +31,14 @@ extension Player{
     func setupPlayer(_ ground: Ground, scene: SKScene){
         position = CGPoint(x: scene.frame.width/2 - ground.frame.height * 0.75, y: scene.frame.height/2 - 25.0)
         scene.addChild(self)
+        setupAnim()
+    }
+    func setupAnim(){
+        var textures: [SKTexture] = []
+        
+        for i in 1...2{
+            textures.append(SKTexture(imageNamed: "player\(i)"))
+        }
+        run(.repeatForever(.animate(with: textures, timePerFrame: 0.10)))
     }
 }
