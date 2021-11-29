@@ -63,7 +63,7 @@ extension GameScene{
         wall.size.height = wall.frame.height * 0.4
         wall.size.width = wall.frame.width * 0.4
         //wall.position = CGPoint(x: size.width + wall.frame.width, y: frame.height/2 + (wall.frame.height + groundNode.frame.height)/2 * scale)
-        wall.position = CGPoint(x: frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.75)/2 * scale,
+        wall.position = CGPoint(x: frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.5)/2 * scale,
                                 y: size.height + wall.frame.height)
         wall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
         wall.physicsBody!.isDynamic = false

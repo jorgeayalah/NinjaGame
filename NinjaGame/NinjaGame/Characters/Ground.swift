@@ -25,7 +25,7 @@ extension Ground{
             let ground = Ground()
             ground.position = CGPoint(x: scene.frame.size.width/2.0, y: CGFloat(i)*ground.frame.width)
             ground.zRotation = .pi/2
-            ground.size.height = ground.frame.width * 0.75
+            ground.size.height = ground.frame.width * 0.5
             print(ground.position)
             print(scene.frame.size)
             scene.addChild(ground)

@@ -32,7 +32,8 @@ class Player: SKSpriteNode{
 
 extension Player{
     func setupPlayer(_ ground: Ground, scene: SKScene){
-        position = CGPoint(x: scene.frame.width/2 - ground.frame.height * 0.75, y: scene.frame.height/2 - 25.0)
+        //position = CGPoint(x: scene.frame.width/2 - ground.frame.height * 0.5, y: scene.frame.height/2 - 25.0)
+        position = CGPoint(x: scene.frame.width/2 - ground.size.height, y: scene.frame.height/2 - 25.0)
         scene.addChild(self)
         setupAnim()
     }
@@ -48,12 +49,15 @@ extension Player{
         isMoveDown = !isMoveDown
         let scale: CGFloat
         if isMoveDown{
-            scale = -0.75
+            scale = 0.25
         }else{
-            scale = 0.75
+            scale = -0.25
         }
         
-        let moveBy = SKAction.moveBy(x: scale*(frame.height*2.6), y: 0.0, duration: 0.1)
+        let flipY  = SKAction.scaleY(to: (scale * -1.0), duration: 0.1)
+        run(flipY)
+        let moveBy = SKAction.moveBy(x: scale*3.6*(frame.height*2.6), y: 0.0, duration: 0.1)
+        //let moveBy = SKAction.moveBy(x: 0.0, y: scale*(frame.width*2.6), duration: 0.1)
         run(moveBy)
     }
 }
