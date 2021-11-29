@@ -18,6 +18,8 @@ class GameScene: SKScene {
     var wallTimer: Timer?
     var cloudTimer: Timer?
     
+    var numScore = 0
+    
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(rgb: 0xB3E5FC)
         setupNodes()
@@ -44,7 +46,10 @@ extension GameScene{
         physicsWorld.contactDelegate = self
     }
     func setupTimer(){
-        let wallRandom = CGFloat.random(min: 1.5, max: 2.5)
+        var wallRandom = CGFloat.random(min: 1.5, max: 2.5)
+        run(.repeatForever(.sequence([.wait(forDuration: 5.0), .run{
+            wallRandom -= 1.0
+        }])))
         wallTimer = Timer.scheduledTimer(timeInterval: TimeInterval(wallRandom), target: self, selector: #selector(spawnWalls), userInfo: nil, repeats: true)
         let cloudRandom = CGFloat.random(min: 3.5, max: 6.5)
         cloudTimer = Timer.scheduledTimer(timeInterval: TimeInterval(cloudRandom), target: self, selector: #selector(spawnClouds), userInfo: nil, repeats: true)
@@ -57,23 +62,46 @@ extension GameScene{
         }else{
             scale = 1.0
         }
+        
+        //Wall
         let wall = SKSpriteNode(imageNamed: "block").copy() as! SKSpriteNode
         wall.name = "Block"
         wall.zPosition = 2.0
+        let value: CGFloat = (wall.frame.width + groundNode.frame.height * 0.5)/2.0
         wall.size.height = wall.frame.height * 0.4
         wall.size.width = wall.frame.width * 0.4
-        //wall.position = CGPoint(x: size.width + wall.frame.width, y: frame.height/2 + (wall.frame.height + groundNode.frame.height)/2 * scale)
         wall.position = CGPoint(x: frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.5)/2 * scale,
                                 y: size.height + wall.frame.height)
+//        let wallPosX = frame.width/2 + value * scale
+//        wall.position = CGPoint(x: wallPosX,
+//                                y: size.height + wall.frame.height)
         wall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
         wall.physicsBody!.isDynamic = false
         wall.physicsBody!.categoryBitMask = PhysicsCategory.Wall
         
         addChild(wall)
         wall.run(.sequence([.wait(forDuration: 8.0), .removeFromParent()]))
+        
+        //Score
+        let score = SKSpriteNode(texture: nil, color: .green, size: CGSize(width: 50.0, height: 50.0)).copy() as! SKSpriteNode
+        score.name = "Score"
+        score.zPosition = 5.0
+        score.size.height = score.frame.height * 0.4
+        score.size.width = score.frame.width * 0.4
+        let scorePosX = frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.5)/2 * (-scale)
+        //score.position = CGPoint(x: scorePosX, y: wall.position.y + score.frame.width)
+        score.position = CGPoint(x: scorePosX, y: wall.position.y + score.frame.width)
+        score.physicsBody = SKPhysicsBody(rectangleOf: score.size)
+        score.physicsBody!.isDynamic = false
+        score.physicsBody!.categoryBitMask = PhysicsCategory.Score
+        addChild(score)
     }
     func moveWall(){
         enumerateChildNodes(withName: "Block") { (node, _) in
+            let node = node as! SKSpriteNode
+            node.position.y -= self.moveSpeed
+        }
+        enumerateChildNodes(withName: "Score") { (node, _) in
             let node = node as! SKSpriteNode
             node.position.y -= self.moveSpeed
         }
@@ -102,6 +130,14 @@ extension GameScene: SKPhysicsContactDelegate{
         case PhysicsCategory.Wall:
             print("Wall")
             gameOver()
+        case PhysicsCategory.Score:
+            if let node = other.node{
+                numScore += 1
+                if numScore % 5 == 0{
+                    moveSpeed += 2.0
+                }
+                node.removeFromParent()
+            }
         default: break
         }
     }
