@@ -63,9 +63,9 @@ class GameScene: SKScene {
             setupTimer()
             
         } else if node.name == HUDSettings.gameOver {
-//            let scene = GameScene(size: size)
-//            scene.scaleMode = scaleMode
-//                        view!.presentScene(scene, transition: .fade(withDuration: 0.5))
+            let scene = GameScene(size: size)
+            scene.scaleMode = scaleMode
+            view!.presentScene(scene, transition: .fade(withDuration: 0.5))
             print("Dead")
             
         } else {
@@ -172,8 +172,8 @@ extension GameScene{
     }
     func gameOver() {
         playerNode.removeFromParent()
-//        wallTimer?.invalidate()
-//        cloudTimer?.invalidate()
+        wallTimer?.invalidate()
+        cloudTimer?.invalidate()
         gameState = .dead
         isPaused = true
         
