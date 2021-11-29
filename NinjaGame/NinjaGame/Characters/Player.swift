@@ -33,7 +33,7 @@ class Player: SKSpriteNode{
 extension Player{
     func setupPlayer(_ ground: Ground, scene: SKScene){
         //position = CGPoint(x: scene.frame.width/2 - ground.frame.height * 0.5, y: scene.frame.height/2 - 25.0)
-        position = CGPoint(x: scene.frame.width/2 - ground.size.height, y: scene.frame.height/2 - 25.0)
+        position = CGPoint(x: scene.frame.width/2 - ground.size.height + 10.0, y: scene.frame.height/2 - 30.0)
         scene.addChild(self)
         setupAnim()
     }

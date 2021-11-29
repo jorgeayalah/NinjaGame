@@ -26,8 +26,8 @@ class GameScene: SKScene {
         let ratio: CGFloat
         switch UIScreen.main.nativeBounds.height {
         case 2688, 1792, 2436:
-            //ratio = 2.16
-            ratio = 16/9
+            ratio = 2.16
+            //ratio = 16/9
         default:
             ratio = 16/9
         }
@@ -52,6 +52,7 @@ class GameScene: SKScene {
         //shape.zRotation = .pi/2
         shape.lineWidth = 3.0
         shape.strokeColor = .red
+        shape.zRotation = .pi/2
         addChild(shape)
         if gameState == .initial{
             setupNodes()
@@ -63,10 +64,7 @@ class GameScene: SKScene {
         super.touchesBegan(touches, with: event)
         guard let touch = touches.first else { return }
         let node = atPoint(touch.location(in: self))
-        
-        print("Debug1: \(node.name)")
         if node.name == HUDSettings.tapToStart {
-            print("Debug2: \(node.name)")
             gameState = .play
             isPaused = false
             setupTimer()
@@ -108,7 +106,7 @@ extension GameScene{
             wallRandom -= 1.0
         }])))
         wallTimer = Timer.scheduledTimer(timeInterval: TimeInterval(wallRandom), target: self, selector: #selector(spawnWalls), userInfo: nil, repeats: true)
-        let cloudRandom = CGFloat.random(min: 3.5, max: 6.5)
+        let cloudRandom = CGFloat.random(min: 1.5, max: 5.5)
         cloudTimer = Timer.scheduledTimer(timeInterval: TimeInterval(cloudRandom), target: self, selector: #selector(spawnClouds), userInfo: nil, repeats: true)
     }
     

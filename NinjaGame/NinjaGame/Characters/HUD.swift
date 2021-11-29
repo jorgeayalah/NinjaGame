@@ -11,7 +11,10 @@ enum HUDSettings{
     static let score = "Score"
     static let highscore = "Highscore"
     static let tapToStart = "Tap To Start"
-    static let gameOver = "Game Over"
+    static let gameOver =   """
+                            Game
+                            Over
+                            """
 }
 
 class HUD: SKNode {
@@ -42,7 +45,7 @@ class HUD: SKNode {
     func setupScoreLbl(_ score: Int){
         guard let scene = scene as? GameScene else {return}
 //        let pos = CGPoint(x: scene.frame.width - 30, y: 20.0)
-        let pos = CGPoint(x: 0.0, y: 0.0)
+        let pos = CGPoint(x: 10.0, y: 140.0)
         addLabel(HUDSettings.score, text: "Score: \(score)", fontSize: 20.0, pos: pos)
         scoreLbl = childNode(withName: HUDSettings.score) as? SKLabelNode
         scoreLbl.zRotation = .pi/2
@@ -52,7 +55,7 @@ class HUD: SKNode {
     
     func setupHighscoreLbl(_ highscore: Int) {
         guard let scene = scene as? GameScene else { return }
-        let pos = CGPoint(x: scene.playableRect.maxX - 30.0, y: scene.playableRect.maxY - 30.0)
+        let pos = CGPoint(x: 10.0, y: 700.0)
         addLabel(HUDSettings.highscore, text: "Highscore: \(highscore)", fontSize: 20.0, pos: pos)
         highscoreLbl = childNode(withName: HUDSettings.highscore) as? SKLabelNode
         highscoreLbl.horizontalAlignmentMode = .right
@@ -61,7 +64,7 @@ class HUD: SKNode {
     
     func addLbl(fontSize: CGFloat, name: String, text: String){
         guard let scene = scene as? GameScene else {return}
-        let pos = CGPoint (x: scene.playableRect.width/2.0, y: scene.playableRect.height/2.0 + 200.0)
+        let pos = CGPoint (x: scene.playableRect.height/2.0, y: scene.playableRect.width/2.0 + 200.0)
         addLabel(name, text: text, fontSize: fontSize, pos: pos)
         
     }
@@ -76,7 +79,7 @@ class HUD: SKNode {
         case .start:
             addLbl(fontSize: 70.0, name: HUDSettings.tapToStart, text: HUDSettings.tapToStart)
         case .dead:
-        addLbl(fontSize: 90.0, name: HUDSettings.gameOver, text: HUDSettings.gameOver)
+        addLbl(fontSize: 70.0, name: HUDSettings.gameOver, text: HUDSettings.gameOver)
         default: break
         }
     }
