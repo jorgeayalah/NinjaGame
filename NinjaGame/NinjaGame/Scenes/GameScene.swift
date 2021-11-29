@@ -26,7 +26,8 @@ class GameScene: SKScene {
         let ratio: CGFloat
         switch UIScreen.main.nativeBounds.height {
         case 2688, 1792, 2436:
-            ratio = 2.16
+            //ratio = 2.16
+            ratio = 16/9
         default:
             ratio = 16/9
         }
@@ -34,7 +35,8 @@ class GameScene: SKScene {
         let playableHeight = size.height / ratio
         let playableMargin = (size.width - playableHeight) / 2.0
         
-        return CGRect(x: playableMargin, y: 0.0, width: playableHeight, height: size.width)
+        return CGRect(x: 0, y: 130, width: playableHeight, height: size.width)
+        // x: 0, y: 130
     }
     
     var gameState: GameState = .initial {
@@ -46,6 +48,11 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(rgb: 0xB3E5FC)
         
+        let shape = SKShapeNode(rect: playableRect)
+        //shape.zRotation = .pi/2
+        shape.lineWidth = 3.0
+        shape.strokeColor = .red
+        addChild(shape)
         if gameState == .initial{
             setupNodes()
             setupPhysics()
@@ -128,12 +135,13 @@ extension GameScene{
         wall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
         wall.physicsBody!.isDynamic = false
         wall.physicsBody!.categoryBitMask = PhysicsCategory.Wall
-        
+        wall.zRotation = .pi/2
         addChild(wall)
         wall.run(.sequence([.wait(forDuration: 8.0), .removeFromParent()]))
         
         //Score
-        let score = SKSpriteNode(texture: nil, color: .green, size: CGSize(width: 50.0, height: 50.0)).copy() as! SKSpriteNode
+//        let score = SKSpriteNode(texture: nil, color: .green, size: CGSize(width: 50.0, height: 50.0)).copy() as! SKSpriteNode
+        let score = SKSpriteNode(imageNamed: "apple").copy() as! SKSpriteNode
         score.name = "Score"
         score.zPosition = 5.0
         score.size.height = score.frame.height * 0.4

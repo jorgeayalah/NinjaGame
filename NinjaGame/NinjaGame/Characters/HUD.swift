@@ -41,9 +41,11 @@ class HUD: SKNode {
     
     func setupScoreLbl(_ score: Int){
         guard let scene = scene as? GameScene else {return}
-        let pos = CGPoint(x: scene.frame.width - 30, y: 20.0)
+//        let pos = CGPoint(x: scene.frame.width - 30, y: 20.0)
+        let pos = CGPoint(x: 0.0, y: 0.0)
         addLabel(HUDSettings.score, text: "Score: \(score)", fontSize: 20.0, pos: pos)
         scoreLbl = childNode(withName: HUDSettings.score) as? SKLabelNode
+        scoreLbl.zRotation = .pi/2
         scoreLbl.horizontalAlignmentMode = .left
         scoreLbl.verticalAlignmentMode = .top
     }
