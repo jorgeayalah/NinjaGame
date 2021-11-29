@@ -23,6 +23,10 @@ class GameScene: SKScene {
         setupNodes()
         setupPhysics()
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        playerNode.setupMoveUpDpwn()
+    }
     override func update(_ currentTime: TimeInterval) {
         groundNode.moveGround(self)
         moveWall()

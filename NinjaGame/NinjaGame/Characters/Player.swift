@@ -8,6 +8,9 @@
 import SpriteKit
 
 class Player: SKSpriteNode{
+    
+    var isMoveDown = false
+    
     init(){
         let texture = SKTexture(imageNamed: "player1")
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -40,5 +43,17 @@ extension Player{
             textures.append(SKTexture(imageNamed: "player\(i)"))
         }
         run(.repeatForever(.animate(with: textures, timePerFrame: 0.10)))
+    }
+    func setupMoveUpDpwn(){
+        isMoveDown = !isMoveDown
+        let scale: CGFloat
+        if isMoveDown{
+            scale = -0.75
+        }else{
+            scale = 0.75
+        }
+        
+        let moveBy = SKAction.moveBy(x: scale*(frame.height*2.6), y: 0.0, duration: 0.1)
+        run(moveBy)
     }
 }
