@@ -45,8 +45,12 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(rgb: 0xB3E5FC)
-        setupNodes()
-        setupPhysics()
+        
+        if gameState == .initial{
+            setupNodes()
+            setupPhysics()
+            gameState = .start
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -59,14 +63,14 @@ class GameScene: SKScene {
             setupTimer()
             
         } else if node.name == HUDSettings.gameOver {
-            let scene = GameScene(size: size)
-            scene.scaleMode = scaleMode
-            view!.presentScene(scene, transition: .fade(withDuration: 0.5))
+//            let scene = GameScene(size: size)
+//            scene.scaleMode = scaleMode
+//                        view!.presentScene(scene, transition: .fade(withDuration: 0.5))
+            print("Dead")
             
         } else {
             playerNode.setupMoveUpDown()
         }
-        //playerNode.setupMoveUpDpwn()
     }
     override func update(_ currentTime: TimeInterval) {
         if gameState != .play {
@@ -168,8 +172,8 @@ extension GameScene{
     }
     func gameOver() {
         playerNode.removeFromParent()
-        wallTimer?.invalidate()
-        cloudTimer?.invalidate()
+//        wallTimer?.invalidate()
+//        cloudTimer?.invalidate()
         gameState = .dead
         isPaused = true
         

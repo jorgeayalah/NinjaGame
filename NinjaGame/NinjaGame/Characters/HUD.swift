@@ -60,9 +60,6 @@ class HUD: SKNode {
         guard let scene = scene as? GameScene else {return}
         let pos = CGPoint (x: scene.playableRect.width/2.0, y: scene.playableRect.height/2.0 + 200.0)
         addLabel(name, text: text, fontSize: fontSize, pos: pos)
-//        label = childNode(withName: name) as! SKLabelNode
-//        label.horizontalAlignmentMode = .center
-//        label.verticalAlignmentMode = .center
         
     }
     

@@ -29,7 +29,6 @@
 		5DA772152754BA7D00BAA707 /* ScoreGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGenerator.swift; sourceTree = "<group>"; };
 		5DA772192754BC6000BAA707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA7721D2754BC8F00BAA707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5DA772202754C06200BAA707 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Krungthep.ttf; path = ../../../../Krungthep.ttf; sourceTree = "<group>"; };
 		5DA772222754C06A00BAA707 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
 		FB17A4C42746BBC20098FB86 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FB65454527500E9100ED9F7E /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				5DA772212754C06900BAA707 /* Fonts */,
-				5DA772202754C06200BAA707 /* Krungthep.ttf */,
 				5DA772192754BC6000BAA707 /* AppDelegate.swift */,
 				5DA7721D2754BC8F00BAA707 /* AppDelegate.swift */,
 				FB9D4B082745701B004B2674 /* Scenes */,
