@@ -57,7 +57,9 @@ class GameScene: SKScene {
         guard let touch = touches.first else { return }
         let node = atPoint(touch.location(in: self))
         
+        print("Debug1: \(node.name)")
         if node.name == HUDSettings.tapToStart {
+            print("Debug2: \(node.name)")
             gameState = .play
             isPaused = false
             setupTimer()
@@ -88,7 +90,7 @@ extension GameScene{
         groundNode.setupGround(self)
         playerNode.setupPlayer(groundNode, scene: self)
         cloud.setupClouds()
-        setupTimer() // to spawn walls
+        setupHUD() // to spawn walls
     }
     func setupPhysics(){
         physicsWorld.contactDelegate = self
