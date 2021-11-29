@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DA772132754BA5C00BAA707 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA772122754BA5C00BAA707 /* HUD.swift */; };
+		5DA772162754BA7D00BAA707 /* ScoreGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA772152754BA7D00BAA707 /* ScoreGenerator.swift */; };
+		5DA7721A2754BC6000BAA707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA772192754BC6000BAA707 /* AppDelegate.swift */; };
+		5DA7721E2754BC8F00BAA707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7721D2754BC8F00BAA707 /* AppDelegate.swift */; };
+		5DA772232754C09900BAA707 /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA772222754C06A00BAA707 /* Krungthep.ttf */; };
 		FB17A4C52746BBC20098FB86 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB17A4C42746BBC20098FB86 /* Player.swift */; };
 		FB65454627500E9100ED9F7E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65454527500E9100ED9F7E /* Types.swift */; };
 		FB92F1D8274FF765007FB9F3 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92F1D7274FF765007FB9F3 /* CGFloat+Ext.swift */; };
 		FB92F1DA274FFC04007FB9F3 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92F1D9274FFC04007FB9F3 /* Cloud.swift */; };
-		FB9D4AF227456E95004B2674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D4AF127456E95004B2674 /* AppDelegate.swift */; };
 		FB9D4AF827456E96004B2674 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D4AF727456E96004B2674 /* GameScene.swift */; };
 		FB9D4AFA27456E96004B2674 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D4AF927456E96004B2674 /* GameViewController.swift */; };
 		FB9D4AFD27456E96004B2674 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9D4AFB27456E96004B2674 /* Main.storyboard */; };
@@ -21,12 +25,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5DA772122754BA5C00BAA707 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		5DA772152754BA7D00BAA707 /* ScoreGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGenerator.swift; sourceTree = "<group>"; };
+		5DA772192754BC6000BAA707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5DA7721D2754BC8F00BAA707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5DA772202754C06200BAA707 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Krungthep.ttf; path = ../../../../Krungthep.ttf; sourceTree = "<group>"; };
+		5DA772222754C06A00BAA707 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
 		FB17A4C42746BBC20098FB86 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FB65454527500E9100ED9F7E /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		FB92F1D7274FF765007FB9F3 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		FB92F1D9274FFC04007FB9F3 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		FB9D4AEE27456E95004B2674 /* NinjaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NinjaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB9D4AF127456E95004B2674 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB9D4AF727456E96004B2674 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FB9D4AF927456E96004B2674 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		FB9D4AFC27456E96004B2674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DA772212754C06900BAA707 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5DA772222754C06A00BAA707 /* Krungthep.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FB65454427500E7700ED9F7E /* Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +102,10 @@
 		FB9D4AF027456E95004B2674 /* NinjaGame */ = {
 			isa = PBXGroup;
 			children = (
-				FB9D4AF127456E95004B2674 /* AppDelegate.swift */,
+				5DA772212754C06900BAA707 /* Fonts */,
+				5DA772202754C06200BAA707 /* Krungthep.ttf */,
+				5DA772192754BC6000BAA707 /* AppDelegate.swift */,
+				5DA7721D2754BC8F00BAA707 /* AppDelegate.swift */,
 				FB9D4B082745701B004B2674 /* Scenes */,
 				FB9D4B1D27457C2E004B2674 /* Characters */,
 				FB9D4B0727457000004B2674 /* Controllers */,
@@ -126,6 +146,8 @@
 				FB9D4B1E27457C41004B2674 /* Ground.swift */,
 				FB17A4C42746BBC20098FB86 /* Player.swift */,
 				FB92F1D9274FFC04007FB9F3 /* Cloud.swift */,
+				5DA772122754BA5C00BAA707 /* HUD.swift */,
+				5DA772152754BA7D00BAA707 /* ScoreGenerator.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -187,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA772232754C09900BAA707 /* Krungthep.ttf in Resources */,
 				FB9D4AFD27456E96004B2674 /* Main.storyboard in Resources */,
 				FB9D4AFF27456E99004B2674 /* Assets.xcassets in Resources */,
 			);
@@ -199,11 +222,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA7721E2754BC8F00BAA707 /* AppDelegate.swift in Sources */,
+				5DA7721A2754BC6000BAA707 /* AppDelegate.swift in Sources */,
 				FB9D4AF827456E96004B2674 /* GameScene.swift in Sources */,
+				5DA772132754BA5C00BAA707 /* HUD.swift in Sources */,
 				FB9D4B0A274578C8004B2674 /* UIColor+Hex.swift in Sources */,
 				FB92F1D8274FF765007FB9F3 /* CGFloat+Ext.swift in Sources */,
 				FB9D4AFA27456E96004B2674 /* GameViewController.swift in Sources */,
-				FB9D4AF227456E95004B2674 /* AppDelegate.swift in Sources */,
+				5DA772162754BA7D00BAA707 /* ScoreGenerator.swift in Sources */,
 				FB92F1DA274FFC04007FB9F3 /* Cloud.swift in Sources */,
 				FB65454627500E9100ED9F7E /* Types.swift in Sources */,
 				FB17A4C52746BBC20098FB86 /* Player.swift in Sources */,

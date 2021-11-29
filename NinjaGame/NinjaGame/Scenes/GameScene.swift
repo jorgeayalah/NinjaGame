@@ -13,12 +13,35 @@ class GameScene: SKScene {
     var groundNode = Ground()
     var playerNode = Player()
     var cloud = Cloud()
+    var hud = HUD()
     
     var moveSpeed: CGFloat = 8.0
     var wallTimer: Timer?
     var cloudTimer: Timer?
     
+    
     var numScore = 0
+    
+    var playableRect: CGRect {
+        let ratio: CGFloat
+        switch UIScreen.main.nativeBounds.height {
+        case 2688, 1792, 2436:
+            ratio = 2.16
+        default:
+            ratio = 16/9
+        }
+        
+        let playableHeight = size.height / ratio
+        let playableMargin = (size.width - playableHeight) / 2.0
+        
+        return CGRect(x: playableMargin, y: 0.0, width: playableHeight, height: size.width)
+    }
+    
+    var gameState: GameState = .initial {
+        didSet {
+            hud.setupGameState(from: oldValue, to: gameState)
+        }
+    }
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(rgb: 0xB3E5FC)
@@ -27,9 +50,30 @@ class GameScene: SKScene {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        playerNode.setupMoveUpDpwn()
+        guard let touch = touches.first else { return }
+        let node = atPoint(touch.location(in: self))
+        
+        if node.name == HUDSettings.tapToStart {
+            gameState = .play
+            isPaused = false
+            setupTimer()
+            
+        } else if node.name == HUDSettings.gameOver {
+            let scene = GameScene(size: size)
+            scene.scaleMode = scaleMode
+            view!.presentScene(scene, transition: .fade(withDuration: 0.5))
+            
+        } else {
+            playerNode.setupMoveUpDown()
+        }
+        //playerNode.setupMoveUpDpwn()
     }
     override func update(_ currentTime: TimeInterval) {
+        if gameState != .play {
+            isPaused = true
+            return
+        }
+        
         groundNode.moveGround(self)
         moveWall()
         cloud.moveCloud(self)
@@ -67,7 +111,7 @@ extension GameScene{
         let wall = SKSpriteNode(imageNamed: "block").copy() as! SKSpriteNode
         wall.name = "Block"
         wall.zPosition = 2.0
-        let value: CGFloat = (wall.frame.width + groundNode.frame.height * 0.5)/2.0
+        //let value: CGFloat = (wall.frame.width + groundNode.frame.height * 0.5)/2.0
         wall.size.height = wall.frame.height * 0.4
         wall.size.width = wall.frame.width * 0.4
         wall.position = CGPoint(x: frame.width/2 + (wall.frame.width + groundNode.frame.height * 0.5)/2 * scale,
@@ -117,8 +161,22 @@ extension GameScene{
         addChild(cloud)
         cloud.run(.sequence([.wait(forDuration: 15.0), .removeFromParent()]))
     }
-    func gameOver(){
+    func setupHUD() {
+        addChild(hud)
+        hud.setupScoreLbl(numScore)
+        hud.setupHighscoreLbl(ScoreGenerator.sharedInstance.getHighscore())
+    }
+    func gameOver() {
         playerNode.removeFromParent()
+        wallTimer?.invalidate()
+        cloudTimer?.invalidate()
+        gameState = .dead
+        isPaused = true
+        
+        let highscore = ScoreGenerator.sharedInstance.getHighscore()
+        if numScore > highscore {
+            ScoreGenerator.sharedInstance.setHighscore(numScore)
+        }
     }
 }
 
@@ -133,8 +191,9 @@ extension GameScene: SKPhysicsContactDelegate{
         case PhysicsCategory.Score:
             if let node = other.node{
                 numScore += 1
+                hud.scoreLbl.text = "Score: \(numScore)"
                 if numScore % 5 == 0{
-                    moveSpeed += 2.0
+                    moveSpeed += 1.0
                 }
                 node.removeFromParent()
             }

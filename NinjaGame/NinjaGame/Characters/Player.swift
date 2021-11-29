@@ -45,7 +45,7 @@ extension Player{
         }
         run(.repeatForever(.animate(with: textures, timePerFrame: 0.10)))
     }
-    func setupMoveUpDpwn(){
+    func setupMoveUpDown(){
         isMoveDown = !isMoveDown
         let scale: CGFloat
         if isMoveDown{
